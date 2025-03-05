@@ -11,7 +11,7 @@ export default function Home() {
               nisi, senectus pharetra, ac porttitor orci.
             </p>
             <a
-              href="/"
+              href="/blog/posts"
               className="outline outline-1 outline-offset-2 border-purple-700 text-purple-700 hover:text-white py-2 px-4 rounded hover:bg-purple-800 md:w-auto"
             >
               Go to Blog
