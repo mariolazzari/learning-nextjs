@@ -10,6 +10,7 @@ import {
 // Depending on the size of the application, this would be stored in a database.
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import clsx from "clsx";
 
 const links = [
   { name: "Home", href: "/", icon: HomeIcon },

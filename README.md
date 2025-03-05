@@ -1,1 +1,1 @@
-# learning-nextjs
+# Learning NextJS by LinkedIn Learning
