@@ -1,9 +1,11 @@
 import Post from "@/components/post";
-import { connectDB } from "@/data/connectDB";
+import { sql } from "@/data/connectDB";
 import { posts } from "@/data/posts";
 
 async function PostsPage() {
-  const client = await connectDB();
+  const client = await sql`
+    select now()
+  `;
 
   return (
     <>

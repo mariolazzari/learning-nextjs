@@ -1,14 +1,9 @@
-import { createClient } from "@vercel/postgres";
+import postgres from "postgres";
 
-export async function connectDB() {
-  try {
-    const client = createClient();
-    await client.connect();
-    if (client) {
-      console.log("Connetced to database");
-      return client;
-    }
-  } catch (error) {
-    console.error("Postgres connection error:", error);
-  }
-}
+export const sql = postgres({
+  db: "blog",
+  host: "localhost",
+  port: 5432,
+  user: "postgres",
+  password: "password",
+});
