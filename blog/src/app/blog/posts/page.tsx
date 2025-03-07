@@ -1,24 +1,20 @@
-import Post from "@/components/post";
-import { getPosts } from "@/data/db";
-import { type Post as PostType } from "@/src/types/Post";
-import { notFound } from "next/navigation";
+import Link from "next/link"
 
-async function PostsPage() {
-  const posts: PostType[] | undefined = await getPosts();
-  if (!posts) {
-    return notFound();
-  }
+import { Button } from "@/app/ui/components/button"
+// import { posts } from '@/app/lib/placeholder-data';
+import Post from '@/app/ui/components/posts/Post';
+import { connectToDB, getPosts } from '@/app/lib/data';
+
+
+export default async function Page() {
+  const client = await connectToDB();
+  const posts = await getPosts();
 
   return (
     <>
+      {client && <p className='text-green-500 my-2'>Connected to database!</p>}
+      <Link href="/blog/post/insert"><Button className="outline outline-1  border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white my-5 py-2 px-4 rounded">New +</Button></Link>
       <h1>Posts</h1>
-      <div className="flex justify-around items-center gap-4 flex-wrap">
-        {posts.map(post => (
-          <Post key={post.id} {...post} />
-        ))}
-      </div>
-    </>
-  );
+      {posts?.map((post) => <Post key={post.id} {...post} />)}
+    </>)
 }
-
-export default PostsPage;
